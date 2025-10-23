@@ -2,14 +2,14 @@ package com.directsupplykatainterview.helloworldservice.model;
 
 import java.time.Instant;
 
-public class HealthResponse {
+public class HealthResponseModel {
     private String status;
     private Instant timestamp;
     private String message;
 
     // Convenience constructor: create a HealthResponse with a message. Status defaults to "UP" and
     // timestamp is set to now.
-    public HealthResponse(String message) {
+    public HealthResponseModel(String message) {
         this.status = "UP";
         this.timestamp = Instant.now();
         this.message = message;
