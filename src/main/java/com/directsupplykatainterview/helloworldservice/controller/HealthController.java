@@ -8,21 +8,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.directsupplykatainterview.helloworldservice.services.HealthService;
 import com.directsupplykatainterview.helloworldservice.model.HealthResponseModel;
+import com.directsupplykatainterview.helloworldservice.facade.HealthFacade;
 
 @RestController
 @RequestMapping("/api/v1")
 public class HealthController {
 
-    private final HealthService healthService;
+    private final HealthFacade healthFacade;
 
     @Autowired
-    public HealthController(HealthService healthService) {
-        this.healthService = healthService;
+    public HealthController(HealthFacade healthFacade) {
+        this.healthFacade = healthFacade;
     }
 
     @GetMapping("/health")
     public ResponseEntity<HealthResponseModel> healthCheck() {
-        HealthResponseModel response = healthService.getSystemHealth();
+        HealthResponseModel response = healthFacade.getHealthStatus();
         return ResponseEntity.ok(response);
     }
 }
